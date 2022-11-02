@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Pioneer</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        body{
+
+                background-image: url(/images/p.jpg);
+                background-repeat: no-repeat;
+                background-attachment: fixed;  
+                background-size: cover;
+            }
+        .dx{
+            border: 3px dashed rgb(243, 196, 149);
+            margin-bottom: 5%;
+            color: white;
+            font-size: large;
+        }
+        .ss{
+            justify-content: center;
+        }
+        h1{
+             /* font-family: "Lucida Console", "Courier New", monospace;*/
+             text-align: center; 
+             background-color: rgb(243, 196, 149) ;
+             padding: 20px;
+             margin: auto;
+        }
+        p{
+            margin-bottom: 0;
+        }
+        .form-label{
+            font-weight: 600;
+            color:rgb(230, 193, 193)
+
+        }
+        /* @media (max-width:1028px){
+            body{
+                background-image: url(/images/p.jpg); 
+                background-repeat: no-repeat;
+            }
+
+
+        } */
+
+    </style>
+</head>
+<body >
+    <h1 >File Pioneer</h1>
+    <br><br>
+    <p style="text-align: center;">Your pass code is '<strong><%=fol_name%></strong>'</p>
+    <br><br>
+<!--<p>Single file upload</p>-->
+<div class="container-xl dx">
+<form action="/page" method="post" enctype="multipart/form-data" >
+    <label for="formFile" class="form-label">Single file upload</label>
+    <input type="file" name="filem1" class="form-control">
+    <br>
+    <input type="text" name="fil_name" value="<%=fol_name%>">
+    <br><br>
+    <input type="submit" class="ss btn  btn-primary">
+</form>    
+
+<br><br>
+
+<!--<p>Multiple file upload</p>-->
+<form action="/pages" method="post" enctype="multipart/form-data" >
+    <label for="formFile" class="form-label">Multiple file upload</label>
+    <input type="file" name="filem2" class="form-control" id="formFileMultiple" multiple >    
+    <br>
+    <input type="text" name="fil_name" value="<%=fol_name%>">
+    <br><br>
+    <input type="submit" class="ss btn  btn-primary">
+</form>    </div>
+
+<script>
+document.getElementById("filem1").required = true; 
+document.getElementById("filem2").required = true; 
+
+</script>
+
+ 
+
+
+</body>
+</html>

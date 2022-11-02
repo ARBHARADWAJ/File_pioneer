@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        body{
+            font-style: oblique 23deg;
+            font-size: large;
+            background-color: rgb(168, 223, 194);
+        }
+
+        a{
+            background-color:white;
+            color: blueviolet;
+            text-decoration: none;
+            padding: 5px 6px 5px 6px;
+            border: 1px solid  blueviolet;
+
+        }
+        a:hover{
+            color:white;
+            background-color: blueviolet;            
+            padding: 5px 6px 5px 6px;
+        }
+        h1{
+            text-align: center;
+            font-size: 70px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: aliceblue;
+            border: 1px solid black;
+
+        }
+        footer{
+            padding: 7% 15%;
+    text-align: center;
+        }
+       
+        
+
+    </style>
+</head>
+<body >
+<h1>Download Files</h1>
+
+
+    <div class="container">
+
+<% function return_format(file){ %>
+<%  let ans="" %>
+<% for(let i=file.length-1;i>=0;i--){%>
+    <% if(file[i]==="."){ %>
+        <% for(let j=i;j<file.length;j++){%>
+            <%ans+=file[j];%>
+        <%}%>
+        <%break%>
+    <%}}%>
+<% return ans } %>
+
+
+
+<% if(fileacceptname==="true"){ %>
+
+    <%fname.forEach(function(file){%>
+    <%let a=return_format(file)  %>
+   <%=file.substring(0,20)%>
+    <!--<a href="/upload/<%= foldername %>/<%= file %>" >click here </a>-->
+    <a href="<%= foldername %>/<%= file %>" >click here </a>
+   
+    <% if(a===".docx"||a===".xlsx"||a===".pptx"){ %>
+        &nbsp;
+        <a href="<%=foldername%>/<%=file%>/<%=a%>/.pdf">.pdf</a>
+   <%}%>
+
+   <% if(a===".png"){ %>
+    &nbsp;
+    <a href="<%=foldername%>/<%=file%>/<%=a%>/.jpeg">.jpeg</a>
+    &nbsp;
+    <a href="<%=foldername%>/<%=file%>/<%=a%>/.jpg">.jpg</a>
+   <% } %>
+
+   <%  if(a===".mp4"||a===".avi"|| a===".mov"||a===".webm"||a===".flv"||a===".wmv"|| a===".mkv"||a===".3gpp"||a===".swf"){ %>
+    &nbsp;
+    <a href="<%=foldername%>/<%=file%>/<%=a%>/.mp3">.mp3</a>
+    <% } %>
+    <br><br>
+   
+    <%})%>
+<% } else{ %>
+    
+    <div class="form-control dd">
+    <form action="/check_for_folder" method="post" >
+        <input type="text" name="folder">
+        <input type="submit" class="btn btn-outline-success" value="Submit" style="position:relative; left:5%;">
+    </form> 
+</div>
+
+<% }%>
+</div>
+
+<footer>
+<ul>
+    <li>Here the <strong>click here</strong> refers to download the file. </li>
+    <li>The remaining are the extensions that which are supported by the converter</li>
+</ul>
+</footer>
+</body>
+</html>
